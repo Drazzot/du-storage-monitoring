@@ -13,15 +13,35 @@ PrefixScreen7 = "s7_" --export: the prefix used to enable container monitoring a
 PrefixScreen8 = "s8_" --export: the prefix used to enable container monitoring and display on the 8th screen
 PrefixScreen9 = "s9_" --export: the prefix used to enable container monitoring and display on the 9th screen
 
-screenTitle1 = "-" --export: the title display on the 1st screen, not displayed if empty or equal to "-"
-screenTitle2 = "-" --export: the title display on the 2nd screen, not displayed if empty or equal to "-"
-screenTitle3 = "-" --export: the title display on the 3rd screen, not displayed if empty or equal to "-"
-screenTitle4 = "-" --export: the title display on the 4th screen, not displayed if empty or equal to "-"
+screenTitle1 = "Warp" --export: the title display on the 1st screen, not displayed if empty or equal to "-"
+screenTitle2 = "Ores" --export: the title display on the 2nd screen, not displayed if empty or equal to "-"
+screenTitle3 = "Metal Working" --export: the title display on the 3rd screen, not displayed if empty or equal to "-"
+screenTitle4 = "Metal Working 2" --export: the title display on the 4th screen, not displayed if empty or equal to "-"
 screenTitle5 = "-" --export: the title display on the 5th screen, not displayed if empty or equal to "-"
 screenTitle6 = "-" --export: the title display on the 6th screen, not displayed if empty or equal to "-"
 screenTitle7 = "-" --export: the title display on the 7th screen, not displayed if empty or equal to "-"
 screenTitle8 = "-" --export: the title display on the 8th screen, not displayed if empty or equal to "-"
 screenTitle9 = "-" --export: the title display on the 9th screen, not displayed if empty or equal to "-"
+
+screenFontSize1 = 40
+screenFontSize2 = 25
+screenFontSize3 = 20
+screenFontSize4 = 20
+screenFontSize5 = 25
+screenFontSize6 = 25
+screenFontSize7 = 25
+screenFontSize8 = 25
+screenFontSize9 = 25
+
+screenOrientationVert1 = False
+screenOrientationVert2 = False
+screenOrientationVert3 = True
+screenOrientationVert4 = True
+screenOrientationVert5 = True
+screenOrientationVert6 = True
+screenOrientationVert7 = True
+screenOrientationVert8 = True
+screenOrientationVert9 = True
 
 containerProficiencyLvl = 5 --export: Talent level for Container Proficiency
 containerOptimizationLvl = 5 --export: Talent level for Container Optimization
@@ -30,31 +50,31 @@ groupByItemName = true --export: if enabled, this will group all entries with th
 VolumeRoundedDecimals = 2 --export: maximum of decimals displayed for the volume value
 QuantityRoundedDecimals = 2 --export: maximum of decimals displayed for the quantity value
 PercentRoundedDecimals = 2 --export: maximum of decimals displayed for the percent fill value
-fontSize = 15 --export: the size of the text for all the screen
+fontSize = 20 --export: the size of the text for all the screen
 maxAmountOfElementsLoadedByTick = 5000 --export: the maximum number of element loaded by tick of the coroutine on script startup
 maxAmountOfElementsRefreshedByTick = 200 --export: the maximum number of element refreshed by tick of the coroutine when refreshing values
 
-showTierColors=true --export: show a diffenrent color for each tier (https://du-lua.dev/#/utils for help on the color values)
-T1Color= '0.43,0.65,0.71' --export: the rgb values for the T2 color (https://du-lua.dev/#/utils for help on the color values)
-T2Color= '0.14,0.7,0.3' --export: the rgb values for the T2 color (https://du-lua.dev/#/utils for help on the color values)
-T3Color= '0.26,0.63,1' --export: the rgb values for the T2 color (https://du-lua.dev/#/utils for help on the color values)
-T4Color= '0.66,0.28,0.66' --export: the rgb values for the T2 color (https://du-lua.dev/#/utils for help on the color values)
-T5Color= '1,0.62,0.24' --export: the rgb values for the T2 color (https://du-lua.dev/#/utils for help on the color values)
+showTierColors= true --export: show a diffenrent color for each tier (https://du-lua.dev/#/utils for help on the color values)
+T1Color= '0.43,0.65,0.71' --export: the rgb values for the T2 color
+T2Color= '0.14,0.7,0.3' --export: the rgb values for the T2 color
+T3Color= '0.26,0.63,1' --export: the rgb values for the T2 color
+T4Color= '0.66,0.28,0.66' --export: the rgb values for the T2 color
+T5Color= '1,0.62,0.24' --export: the rgb values for the T2 color
 showTierOnName = true --export: show the tier of the item with the item name
-showVolume = true --export: show or hide the column Volume
+showVolume = false --export: show or hide the column Volume
 volumePosition= 55 --export: the position in percent of width for the column Volume
 showQuantity = true --export: show or hide the column Quantity
 quantityPosition= 75 --export: the position in percent of width for the column Quantity
 
 verticalMode = true --export: rotate the screen 90deg (bottom on right)
-verticalModeBottomSide = "right" --export: when vertical mode is enabled, on which side the bottom of the screen is positioned ("left" or "right")
+verticalModeBottomSide = "left" --export: when vertical mode is enabled, on which side the bottom of the screen is positioned ("left" or "right")
 defaultSorting = "none" --export: the default sorting of items on the screen: "none": like in the container, "items-asc": ascending sorting on the name, "items-desc": descending sorting on the name, "quantity-asc": ascending on the quantity, "quantity-desc": descending on the quantity, "percent-asc": ascending on the percent fill, "percent-desc": descending on the percent fill
 
 --[[
 	INIT
 ]]
 
-local version = '4.10.0'
+local version = '4.10.1'
 
 system.print("----------------------------------")
 system.print("DU-Storage-Monitoring version " .. version)
@@ -79,6 +99,24 @@ options.screenTitle6 = screenTitle6
 options.screenTitle7 = screenTitle7
 options.screenTitle8 = screenTitle8
 options.screenTitle9 = screenTitle9
+options.screenFontSize1 = screenFontSize1
+options.screenFontSize2 = screenFontSize2
+options.screenFontSize3 = screenFontSize3
+options.screenFontSize4 = screenFontSize4
+options.screenFontSize5 = screenFontSize5
+options.screenFontSize6 = screenFontSize6
+options.screenFontSize7 = screenFontSize7
+options.screenFontSize8 = screenFontSize8
+options.screenFontSize9 = screenFontSize9
+options.screenOrientationVert1 = screenOrientationVert1
+options.screenOrientationVert2 = screenOrientationVert2
+options.screenOrientationVert3 = screenOrientationVert3
+options.screenOrientationVert4 = screenOrientationVert4
+options.screenOrientationVert5 = screenOrientationVert5
+options.screenOrientationVert6 = screenOrientationVert6
+options.screenOrientationVert7 = screenOrientationVert7
+options.screenOrientationVert8 = screenOrientationVert8
+options.screenOrientationVert9 = screenOrientationVert9
 options.container_proficiency_lvl = containerProficiencyLvl
 options.container_optimization_lvl = containerOptimizationLvl
 options.groupByItemName = groupByItemName
@@ -192,7 +230,31 @@ titles = {
     options.screenTitle9
 }
 
-
+screenFontSize = {
+    options.screenFontSize1,
+    options.screenFontSize2,
+    options.screenFontSize3,
+    options.screenFontSize4,
+    options.screenFontSize5,
+    options.screenFontSize6,
+    options.screenFontSize7,
+    options.screenFontSize8,
+    options.screenFontSize9
+}
+    
+screenOrientation = {
+    options.screenOrientation1,
+    options.screenOrientation2,
+    options.screenOrientation3,
+    options.screenOrientation4,
+    options.screenOrientation5,
+    options.screenOrientation6,
+    options.screenOrientation7,
+    options.screenOrientation8,
+    options.screenOrientation9
+}
+    
+    
 local sorting=0
 if options.defaultSorting=="items-asc" then sorting = 1
 elseif options.defaultSorting=="items-desc" then sorting = 2
@@ -202,9 +264,24 @@ elseif options.defaultSorting=="percent-asc" then sorting = 5
 elseif options.defaultSorting=="percent-desc" then sorting = 6
 end
 
-function getRenderScript(data, screenTitle)
+--system.print(slot5.getItemId()) -- testing
+--system.print(screens[4].getItemId()) -- testing
+
+
+    
+function getRenderScript(data, screenTitle, screenFont)
+    --system.print(data)
+    --system.print(screenTitle)
+    --system.print(screenFont)
+    --system.print(type(screenFont))
+    
+    fontSize = screenFont
+    --system.print(font_size)
+        
     local rs = [[
+    
     local vmode = ]] .. tostring(options.verticalMode) .. [[
+        
 
     local vmode_side = "]] .. options.verticalModeBottomSide .. [["
     if sorting == nil then sorting = ]] .. sorting .. [[ end
@@ -225,6 +302,7 @@ function getRenderScript(data, screenTitle)
                 if data then
                     screenTitle = data[6] or ""
                 end
+                 
             end
         end
         ]]
@@ -240,13 +318,15 @@ function getRenderScript(data, screenTitle)
         ]]
     else
         rs = rs .. 'items=' .. data .. [[
-
+        
         ]]
         if screenTitle ~= nil then
             rs = rs .. "screenTitle='" .. screenTitle .. [['
             ]]
+            --system.print(screenTitle)
         end
     end
+           
     rs = rs .. [[local rx,ry = getResolution()
         local cx, cy = getCursor()
         if vmode then
@@ -260,8 +340,9 @@ function getRenderScript(data, screenTitle)
         end
         local back=createLayer()
         local front=createLayer()
-        font_size = ]] .. options.fontSize .. [[
-
+        local font_size = ]] .. fontSize ..
+     
+        [[
         local mini=loadFont('Play',12)
         local small=loadFont('Play',14)
         local smallBold=loadFont('Play-Bold',18)
@@ -269,7 +350,7 @@ function getRenderScript(data, screenTitle)
         local medV=loadFont('Play-Bold', 25)
         local bigV=loadFont('Play-Bold', 30)
         local big=loadFont('Play',38)
-        setBackgroundColor( 15/255,24/255,29/255)
+        setBackgroundColor( 0/255,0/255,0/255)
         setDefaultStrokeColor( back,Shape_Line,0,0,0,0.5)
         setDefaultShadow( back,Shape_Line,6,0,0,0,0.5)
         setDefaultFillColor( front,Shape_BoxRounded,249/255,212/255,123/255,1)
@@ -508,11 +589,14 @@ function getRenderScript(data, screenTitle)
     ]]
     return rs
 end
-
-local renderScript = getRenderScript()
+    
+--local renderScript = getRenderScript()
 
 for _,s in pairs(screens) do
-    s.setRenderScript(renderScript)
+    local var = _
+    local fontsize = screenFontSize[var]
+    --system.print(fontsize)
+    s.setRenderScript(getRenderScript(nil, nil, fontsize))
 end
 
 elementsIdList = {}
@@ -685,6 +769,7 @@ MyCoroutines = {
                 for index, screen in pairs(screens) do
                     local prefix = prefixes[index]
                     local title = titles[index]
+                    local screenFont = screenFontSize[index]
                     local refreshScreen=true
                     local i = 1
                     local items_data_for_screen = {}
@@ -707,7 +792,7 @@ MyCoroutines = {
                                     screens_displayed,
                                     utils.round(container.maxvolume),
                                     i,
-                                    container.ingredient.tier,
+                                    container.ingredient.tier                                
                                 }
                                 table.insert(items_data_for_screen,storage_data)
                                 local to_send=json.encode(storage_data)
@@ -722,11 +807,11 @@ MyCoroutines = {
                     end
                     local str_data = '{'
                     for i,v in ipairs(items_data_for_screen) do
-                        str_data = str_data .. '{"' .. tostring(v[1]) .. '",' .. tostring(v[2]) .. ',' .. tostring(v[3]) .. ',' .. tostring(v[4]) .. ',"' .. tostring(v[5]) .. '",' .. tostring(v[8]) .. ',' .. tostring(v[10]) .. ',' .. tostring(v[12]) .. '}'
+                        str_data = str_data .. '{"' .. tostring(v[1]) .. '",' .. tostring(v[2]) .. ',' .. tostring(v[3]) .. ',' .. tostring(v[4]) .. ',"' .. tostring(v[5]) .. '",' .. tostring(v[8]) .. ',' .. tostring(v[10]) .. ',' .. tostring(v[12]) ..'}'
                         if i < #items_data_for_screen then str_data = str_data .. ',' end
                     end
                     str_data = str_data .. '}'
-                    local fullRS = getRenderScript(str_data, title)
+                    local fullRS = getRenderScript(str_data, title, screenFont)
                     if fullRS:len() < 50000 then --if all can stay on screen then
                         screen.setRenderScript(fullRS) 
                     end
